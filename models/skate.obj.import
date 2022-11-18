@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/skate.obj-5f4725430515b11c4718ff8f090bdb07.mesh"
+
+[deps]
+
+files=[ "res://.import/skate.obj-5f4725430515b11c4718ff8f090bdb07.mesh" ]
+
+source_file="res://models/skate.obj"
+dest_files=[ "res://.import/skate.obj-5f4725430515b11c4718ff8f090bdb07.mesh", "res://.import/skate.obj-5f4725430515b11c4718ff8f090bdb07.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

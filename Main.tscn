@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://platform.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/zylann.hterrain/hterrain.gd" type="Script" id=2]
+[ext_resource path="res://3D.gd" type="Script" id=3]
+[ext_resource path="res://addons/zylann.hterrain/hterrain_texture_set.gd" type="Script" id=4]
+[ext_resource path="res://heightmap/data.hterrain" type="Resource" id=5]
+[ext_resource path="res://SpawnPoint.tscn" type="PackedScene" id=6]
+[ext_resource path="res://physicBlock.tscn" type="PackedScene" id=7]
+
+[sub_resource type="ProceduralSky" id=2]
+sky_energy = 0.0
+
+[sub_resource type="Environment" id=1]
+background_mode = 3
+background_sky = SubResource( 2 )
+background_color = Color( 0.0745098, 0.0745098, 0.137255, 1 )
+background_energy = 0.0
+ambient_light_energy = 0.0
+fog_enabled = true
+fog_color = Color( 0.152941, 0.133333, 0.262745, 1 )
+fog_sun_color = Color( 0, 0, 0, 1 )
+fog_sun_amount = 0.59
+fog_depth_end = 326.7
+fog_transmit_enabled = true
+ss_reflections_depth_tolerance = 1.4
+glow_enabled = true
+glow_intensity = 2.23
+glow_strength = 1.11
+glow_bloom = 0.45
+glow_hdr_threshold = 0.25
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 4 )
+mode = 0
+textures = [ [  ], [  ] ]
+
+[node name="3DGamePlay" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="platform" parent="." instance=ExtResource( 1 )]
+transform = Transform( 5.97561, 0, 0, 0, 1, 0, 0, 0, 5.97561, 0, 0, 0 )
+
+[node name="platform2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 5.97561, 0, 0, 0, 0.75893, -3.89115, 0, 0.651172, 4.53508, 0.0621521, 6.47717, -17.8848 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.100392, -0.649525, 0.753683, -0.994948, -0.0651574, 0.0763761, -0.000500145, -0.757543, -0.652785, 0, 2.05692, -4.00968 )
+light_color = Color( 0.254902, 0.27451, 0.729412, 1 )
+light_energy = 0.86
+shadow_enabled = true
+directional_shadow_mode = 0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="HTerrain" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.1655, 0 )
+script = ExtResource( 2 )
+_terrain_data = ExtResource( 5 )
+chunk_size = 16
+collision_enabled = true
+collision_layer = 3
+collision_mask = 3
+shader_type = "LowPoly"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource( 3 )
+
+[node name="SpawnPoint" parent="." instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 73.899, 54.4185, 91.9429 )
+
+[node name="KinematicBody" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 82.827, 46.2503, 84.1781 )
+
+[connection signal="weatherChange" from="." to="." method="_on_3DGamePlay_weatherChange"]
