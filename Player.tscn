@@ -1,0 +1,259 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://SkateBoard.tscn" type="PackedScene" id=2]
+[ext_resource path="res://PlayerAnimation.gd" type="Script" id=3]
+[ext_resource path="res://PlayerSpotLight.gd" type="Script" id=4]
+[ext_resource path="res://sprites/tempPlayerSprite-forward.png" type="Texture" id=5]
+[ext_resource path="res://playerSprite.gd" type="Script" id=6]
+[ext_resource path="res://sprites/tempPlayerSprite-back.png" type="Texture" id=7]
+[ext_resource path="res://sprites/tempPlayerSprite-Left.png" type="Texture" id=8]
+[ext_resource path="res://sprites/tempPlayerSprite-Right.png" type="Texture" id=9]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.447059, 0.54902, 0.823529, 1 )
+
+[sub_resource type="SphereShape" id=7]
+radius = 1.39681
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "Back",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "Forward",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "Right",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "Left",
+"speed": 5.0
+} ]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="Animation" id=6]
+resource_name = "Get_off_skate"
+tracks/0/type = "value"
+tracks/0/path = NodePath("SkateBoard:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.535887, 2.92817 ),
+"update": 0,
+"values": [ Vector3( 0, -0.317012, 0 ), Vector3( 0, -0.832359, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SkateBoard:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Pivot:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 0.535887, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0.505966, 0 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Get_on_skate"
+tracks/0/type = "value"
+tracks/0/path = NodePath("SkateBoard:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 2.21914 ),
+"update": 0,
+"values": [ Vector3( 0, -0.831272, 0 ), Vector3( 0, -0.317012, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SkateBoard:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 2.21914 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Pivot:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 2.63902 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0.505966, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("SkateBoard:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, -1.02755, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SkateBoard:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Pivot:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("cameraRotation/Camera:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.0208663, 1.35464, 2.68689 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("cameraRotation/Camera:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -26.9259, -0.259554, 0.469421 ) ]
+}
+
+[node name="Player" type="KinematicBody" groups=["player"]]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+speed = 20
+skate_speed = 60
+
+[node name="Pivot" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="Pivot"]
+transform = Transform( 0.394257, 0, 0, 0, 0.683297, 0, 0, 0, 0.397276, 0, 0, 0 )
+visible = false
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )
+
+[node name="SpotLight" type="SpotLight" parent="Pivot"]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0.808608, 0 )
+light_energy = 5.757
+spot_range = 27.771
+spot_angle = 36.717
+script = ExtResource( 4 )
+
+[node name="interactionBubble" type="Area" parent="Pivot"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Pivot/interactionBubble"]
+shape = SubResource( 7 )
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Pivot"]
+transform = Transform( 3.71784, 0, 0, 0, 3.71784, 0, 0, 0, 3.71784, 0, 0.000287473, 0 )
+shaded = true
+frames = SubResource( 8 )
+animation = "Back"
+script = ExtResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.394773, 0, 0, 0, 0.684712, 0, 0, 0, 0.394773, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="cameraRotation" type="Spatial" parent="."]
+transform = Transform( -0.999982, 0, 0.00607369, 0, 1, 0, -0.00607369, 0, -0.999982, 0, 0, 0 )
+
+[node name="Camera" type="Camera" parent="cameraRotation"]
+transform = Transform( 0.999973, -0.00614146, -0.00403896, 0.00730469, 0.891563, 0.452838, 0.00081991, -0.452855, 0.891583, 0.0208663, 1.35464, 2.68689 )
+current = true
+fov = 110.0
+far = 224.4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Get_off_skate = SubResource( 6 )
+anims/Get_on_skate = SubResource( 4 )
+anims/RESET = SubResource( 5 )
+script = ExtResource( 3 )
+
+[node name="SkateBoard" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.02755, 0 )
+visible = false
+
+[connection signal="lightToggle" from="." to="Pivot/SpotLight" method="_on_Player_lightToggle"]
+[connection signal="area_entered" from="Pivot/interactionBubble" to="." method="_on_interactionBubble_area_entered"]
+[connection signal="area_exited" from="Pivot/interactionBubble" to="." method="_on_interactionBubble_area_exited"]

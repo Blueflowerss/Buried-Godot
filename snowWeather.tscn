@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="Curve" id=5]
+_data = [ Vector2( 0, 0.506818 ), 0.0, -0.647507, 0, 0, Vector2( 1, 0.125 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+trail_size_modifier = SubResource( 6 )
+emission_shape = 1
+emission_sphere_radius = 20.92
+direction = Vector3( 0, -1, 0 )
+spread = 180.0
+initial_velocity = 2.0
+
+[sub_resource type="CubeMesh" id=4]
+size = Vector3( 0.3, 0.3, 0.3 )
+
+[node name="snowWeather" type="Particles" groups=["weather"]]
+transform = Transform( 6.64789, 0, 0, 0, 0.445987, 0, 0, 0, 6.64789, -0.00213146, 10.6416, 0.0139217 )
+cast_shadow = 0
+generate_lightmap = false
+amount = 1280
+lifetime = 3.0
+speed_scale = 0.41
+randomness = 0.61
+local_coords = false
+process_material = SubResource( 3 )
+draw_pass_1 = SubResource( 4 )
